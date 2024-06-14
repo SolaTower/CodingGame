@@ -1,6 +1,14 @@
 import sys
 import math
 
+
+
+
+# Current code will validate Bronze level
+
+
+
+
 # Auto-generated code below aims at helping you parse
 # the standard input according to the problem statement.
 
