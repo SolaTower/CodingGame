@@ -4,4 +4,4 @@ See [challenge](https://www.codingame.com/contests/summer-challenge-2024-olymbit
 
 Game source code is [here](https://github.com/CodinGame/SummerChallenge2024Olymbits) if you want to run it locally
 
-If you want to current game Rules
+If you want to current game Rules you will have to wait because vpn is blocking me..
