@@ -7,28 +7,65 @@ import math
 player_idx = int(input())
 nb_games = int(input())
 
+print(player_idx, file=sys.stderr, flush=True)
+print(nb_games, file=sys.stderr, flush=True)
+class Map:
+    map: str
+    me: int
+    bg1: int
+    bg2: int
+    me_stun: int
+    bg1_stun: int
+    bg2_stun: int
+    jump_spots: list = None
+
+    def update(self):
+        inputs = input().split()
+        self.map = inputs[0]
+        self.me = int(inputs[1])
+        self.bg1 = int(inputs[2])
+        self.bg2 = int(inputs[3])
+        self.me_stun = int(inputs[4])
+        self.bg1_stun = int(inputs[5])
+        self.bg2_stun = int(inputs[6])
+            
+
+    def debug(self):
+        print(self, file=sys.stderr, flush=True)
+
+    def move(self):
+        max_view_pos = min([self.me+5,len(self.map)-1])
+        max_move_map = self.map[self.me: max_view_pos]
+        size = len(max_move_map)
+        if size > 3 and max_move_map[3] == "#":
+            action = "DOWN"
+        elif size > 2 and max_move_map[2] == "#":
+            action = "LEFT"
+        elif size > 1 and max_move_map[1] == "#":
+            action = "UP"
+        else:
+            action = "RIGHT"
+
+        print(action)
+
+    def __str__(self):
+        return f"""
+            map: {self.map},
+            me: {self.me},
+            bg1: {self.bg1},
+            bg2: {self.bg2},
+            me_stun: {self.me},
+            bg1_stun: {self.bg1},
+            bg2_stun: {self.bg2},
+""" 
+
+game_obj = Map()
 # game loop
 while True:
     for i in range(3):
         score_info = input()
-    for i in range(nb_games):
-        inputs = input().split()
-        gpu = inputs[0]+"...."
-        reg_0 = int(inputs[1])
-        reg_1 = int(inputs[2])
-        reg_2 = int(inputs[3])
-        reg_3 = int(inputs[4])
-        reg_4 = int(inputs[5])
-        reg_5 = int(inputs[6])
-        reg_6 = int(inputs[7])
-        if gpu.startswith('.'):
-            if gpu[reg_0+1] == "#":
-                print("UP")
-            elif gpu[reg_0+2] == "#":
-                print("LEFT")
-            elif gpu[reg_0+3] == "#":
-                print("DOWN")
-            else:
-                print("RIGHT")
-        else:
-                print("RIGHT")
+        print(score_info, file=sys.stderr, flush=True)
+    # for i in range(nb_games):
+    game_obj.update()
+    game_obj.debug()
+    game_obj.move()
